@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How GoateyDev handles account and product information.">
+    <meta name="theme-color" content="#f4f1e9">
+    <title>GoateyDev Privacy Policy</title>
+    <script>
+      (() => {
+        const allowed = ["system", "light", "dark"];
+        let theme = "system";
+        try {
+          const saved = localStorage.getItem("goateydev-theme");
+          if (allowed.includes(saved)) theme = saved;
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f1e9;
+        --ink: #20231f;
+        --muted: #686b63;
+        --line: #d4d2c8;
+        --accent: #d35435;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      :root[data-theme="dark"] {
+        color-scheme: dark; --paper: #000; --ink: #f4f1e9;
+        --muted: #aaa9a2; --line: #343434; --accent: #f0785d;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root[data-theme="system"] {
+          color-scheme: dark; --paper: #000; --ink: #f4f1e9;
+          --muted: #aaa9a2; --line: #343434; --accent: #f0785d;
+        }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
+      .page { width: min(100% - 48px, 850px); margin: auto; }
+      header, footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); }
+      header { min-height: 82px; }
+      footer { margin-top: 72px; padding: 22px 0 30px; border-top: 1px solid var(--line); border-bottom: 0; color: var(--muted); font-size: 13px; }
+      .brand { color: var(--ink); font-weight: 700; text-decoration: none; }
+      .links, .theme-control { display: flex; align-items: center; gap: 16px; }
+      a { color: var(--accent); text-underline-offset: 4px; }
+      .links a { color: var(--muted); font-size: 14px; }
+      select { border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); padding: 7px 10px; font: inherit; font-size: 13px; }
+      main { padding: 60px 0 12px; }
+      .eyebrow { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+      h1, h2 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+      h1 { margin: 12px 0 8px; font-size: clamp(42px, 8vw, 66px); letter-spacing: -.045em; }
+      h2 { margin: 38px 0 8px; font-size: 27px; }
+      p, li { color: var(--muted); }
+      .updated { margin: 0 0 34px; font-size: 14px; }
+      ul { padding-left: 22px; }
+      li + li { margin-top: 7px; }
+      @media (max-width: 600px) {
+        .page { width: min(100% - 34px, 850px); }
+        header { flex-wrap: wrap; padding: 16px 0; }
+        .links { order: 3; width: 100%; }
+        main { padding-top: 42px; }
+        footer { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <a class="brand" href="/">GoateyDev</a>
+        <nav class="links" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/terms.html">Terms</a>
+        </nav>
+        <label class="theme-control">Theme
+          <select id="theme-select" aria-label="Theme">
+            <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+          </select>
+        </label>
+      </header>
+      <main>
+        <p class="eyebrow">GoateyDev services</p>
+        <h1>Privacy Policy</h1>
+        <p class="updated">Effective date: October 11, 2026</p>
+        <p>This policy describes how GoateyDev handles information across its website, shared account services, and products. Products process different information depending on their features. The Reminders section below describes the current app. We will update this policy as products or data practices change.</p>
+
+        <h2>GoateyDev account and sign-in data</h2>
+        <p>When a connected GoateyDev product offers Google sign-in, its client sends a Google ID token to our backend for identity verification. We store the Google account identifier (subject), email address, and, when provided, display name to identify the account. We do not retain the Google ID token or use it to access other Google services.</p>
+        <p>After verification, GoateyDev issues its own app-session credentials. Connected apps store these credentials in encrypted, device-protected storage. Our backend stores token hashes and session expiry and revocation information.</p>
+
+        <h2>Product information</h2>
+        <p>GoateyDev products may process content and information you provide to use their features. We do not sell personal information or use account or product content for advertising.</p>
+
+        <h2 id="reminders">Reminders</h2>
+        <p>Reminders stores reminder and label data on your device. In versions where cloud connectivity is enabled, connecting your GoateyDev account sends reminder names, notes, schedules, repeat settings, delivery and dismissal state, labels, label assignments, and synchronization timestamps to our backend for backup and restore. Local reminders remain available on your device whether or not you connect. Android or your device provider may separately back up local app data according to your device settings.</p>
+
+        <h2>Google data</h2>
+        <p>Google sign-in is used for identity verification and basic account profile information only. Reminders does not request access to Google Drive, Gmail, contacts, or other Google services. Google handles its sign-in interface and information under <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
+
+        <h2>Service providers and hosting</h2>
+        <p>GoateyDev's identity and Reminders backend currently use Google Cloud services. Account and cloud reminder data is stored in a Cloud SQL database in the United States (us-central1). Google processes information as our infrastructure provider so we can operate account, backup, and restore features. We may disclose information if required by law or when reasonably necessary to protect the service and its users.</p>
+
+        <h2>Retention, disconnect, and deletion</h2>
+        <p>Retention depends on the product and feature. In Reminders, disconnecting signs out the current device and stops its automatic cloud sync; it does not delete the GoateyDev account or data already stored in the cloud. Deleted reminder records may be retained as synchronization records so changes can reach other devices. The app currently has no self-service cloud-account deletion control. To ask about deletion of account or cloud data, contact <a href="mailto:goateydev@gmail.com">goateydev@gmail.com</a>. Local reminders remain on your device after disconnecting and can be removed using the app or Android settings.</p>
+
+        <h2>Security</h2>
+        <p>Remote connections use HTTPS. App session credentials are encrypted on the device, and the backend stores hashes rather than raw session tokens. No method of storage or transmission can be guaranteed completely secure.</p>
+
+        <h2>Children</h2>
+        <p>Reminders is a general-purpose productivity app and is not designed to collect information from children. If you believe a child has provided account information to the service, contact us using the address below.</p>
+
+        <h2>Changes and contact</h2>
+        <p>We may update this policy as GoateyDev services change. We will publish the current version on this page and update its effective date.</p>
+        <p>Privacy questions or data requests: <a href="mailto:goateydev@gmail.com">goateydev@gmail.com</a>.</p>
+      </main>
+      <footer><span>GoateyDev</span><a href="mailto:goateydev@gmail.com">Contact</a></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const selector = document.querySelector("#theme-select");
+      selector.value = root.dataset.theme;
+      selector.addEventListener("change", () => {
+        root.dataset.theme = selector.value;
+        try { localStorage.setItem("goateydev-theme", selector.value); } catch {}
+      });
+    </script>
+  </body>
+</html>

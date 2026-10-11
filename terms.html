@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Terms for GoateyDev accounts, website, and products.">
+    <meta name="theme-color" content="#f4f1e9">
+    <title>GoateyDev Terms of Service</title>
+    <script>
+      (() => {
+        const allowed = ["system", "light", "dark"];
+        let theme = "system";
+        try {
+          const saved = localStorage.getItem("goateydev-theme");
+          if (allowed.includes(saved)) theme = saved;
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f1e9; --ink: #20231f; --muted: #686b63;
+        --line: #d4d2c8; --accent: #d35435;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      :root[data-theme="dark"] { color-scheme: dark; --paper: #000; --ink: #f4f1e9; --muted: #aaa9a2; --line: #343434; --accent: #f0785d; }
+      @media (prefers-color-scheme: dark) {
+        :root[data-theme="system"] { color-scheme: dark; --paper: #000; --ink: #f4f1e9; --muted: #aaa9a2; --line: #343434; --accent: #f0785d; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
+      .page { width: min(100% - 48px, 850px); margin: auto; }
+      header, footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); }
+      header { min-height: 82px; }
+      footer { margin-top: 72px; padding: 22px 0 30px; border-top: 1px solid var(--line); border-bottom: 0; color: var(--muted); font-size: 13px; }
+      .brand { color: var(--ink); font-weight: 700; text-decoration: none; }
+      .links, .theme-control { display: flex; align-items: center; gap: 16px; }
+      a { color: var(--accent); text-underline-offset: 4px; }
+      .links a { color: var(--muted); font-size: 14px; }
+      select { border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); padding: 7px 10px; font: inherit; font-size: 13px; }
+      main { padding: 60px 0 12px; }
+      .eyebrow { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+      h1, h2 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+      h1 { margin: 12px 0 8px; font-size: clamp(42px, 8vw, 66px); letter-spacing: -.045em; }
+      h2 { margin: 38px 0 8px; font-size: 27px; }
+      p, li { color: var(--muted); }
+      .updated { margin: 0 0 34px; font-size: 14px; }
+      ul { padding-left: 22px; }
+      li + li { margin-top: 7px; }
+      @media (max-width: 600px) {
+        .page { width: min(100% - 34px, 850px); }
+        header { flex-wrap: wrap; padding: 16px 0; }
+        .links { order: 3; width: 100%; }
+        main { padding-top: 42px; }
+        footer { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <a class="brand" href="/">GoateyDev</a>
+        <nav class="links" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/privacy.html">Privacy</a>
+        </nav>
+        <label class="theme-control">Theme
+          <select id="theme-select" aria-label="Theme">
+            <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+          </select>
+        </label>
+      </header>
+      <main>
+        <p class="eyebrow">GoateyDev services</p>
+        <h1>Terms of Service</h1>
+        <p class="updated">Effective date: October 11, 2026</p>
+        <p>These terms apply to the GoateyDev website, shared account services, and GoateyDev products that link to them. A product may provide additional terms for its specific features. By using a GoateyDev service, you agree to these terms; if you do not agree, do not use that service.</p>
+
+        <h2>GoateyDev accounts</h2>
+        <p>Some GoateyDev products let you connect an account using Google sign-in. Google is used to verify your identity. GoateyDev session credentials are separate from your Google credentials. You are responsible for keeping access to your Google account and devices secure.</p>
+
+        <h2>Your content</h2>
+        <p>You retain your rights to content you create or provide through GoateyDev products. You authorize GoateyDev to store, transmit, and process that content as needed to provide the relevant product features and as described in the <a href="/privacy.html">Privacy Policy</a>. You are responsible for the content you provide.</p>
+
+        <h2>Reminders</h2>
+        <p>Reminders lets you create and manage reminders locally. In versions where cloud connectivity is enabled, connecting your GoateyDev account enables backup and restore of reminder and label data. Disconnecting signs out that device and stops its automatic cloud sync, but does not itself delete information already stored in the cloud. The app currently has no self-service cloud-account deletion control; contact <a href="mailto:goateydev@gmail.com">goateydev@gmail.com</a> about cloud-data deletion.</p>
+
+        <h2>Availability and backups</h2>
+        <p>GoateyDev services are provided on an as-available basis and may be changed, interrupted, or discontinued. Backup features are intended as a convenience and are not a guarantee against data loss. Keep a separate copy of information that is important to you. Sync may take time, require an internet connection, or resolve concurrent changes according to the product's current behavior.</p>
+
+        <h2>Safe use</h2>
+        <p>Reminder delivery can be delayed, changed, or prevented by device settings, battery management, operating-system behavior, connectivity, or service availability. Do not rely on Reminders for emergencies, safety-critical tasks, or as the sole means of meeting important deadlines.</p>
+
+        <h2>Acceptable use and suspension</h2>
+        <p>Do not misuse the service, interfere with its operation, attempt unauthorized access, or use it in violation of applicable law. GoateyDev may restrict or suspend access when reasonably necessary to protect the service, users, or security.</p>
+
+        <h2>Changes and contact</h2>
+        <p>We may update these terms as GoateyDev services change. Continued use after updated terms are published means you accept the updated terms, to the extent permitted by applicable law.</p>
+        <p>Questions about these terms: <a href="mailto:goateydev@gmail.com">goateydev@gmail.com</a>.</p>
+      </main>
+      <footer><span>GoateyDev</span><a href="mailto:goateydev@gmail.com">Contact</a></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const selector = document.querySelector("#theme-select");
+      selector.value = root.dataset.theme;
+      selector.addEventListener("change", () => {
+        root.dataset.theme = selector.value;
+        try { localStorage.setItem("goateydev-theme", selector.value); } catch {}
+      });
+    </script>
+  </body>
+</html>
