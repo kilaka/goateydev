@@ -6,6 +6,17 @@
     <meta name="description" content="Discover apps from GoateyDev.">
     <meta name="theme-color" content="#f4f1e9">
     <title>GoateyDev | Apps with a clear purpose</title>
+    <script>
+      (() => {
+        const validThemes = ["system", "light", "dark"];
+        let theme = "system";
+        try {
+          const savedTheme = localStorage.getItem("goateydev-theme");
+          if (validThemes.includes(savedTheme)) theme = savedTheme;
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <style>
       :root {
         color-scheme: light;
@@ -17,6 +28,28 @@
         --accent-dark: #a53c26;
         --serif: Georgia, "Times New Roman", serif;
         --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      }
+
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --paper: #000;
+        --ink: #f4f1e9;
+        --muted: #aaa9a2;
+        --line: #343434;
+        --accent: #f0785d;
+        --accent-dark: #ff9a7e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root[data-theme="system"] {
+          color-scheme: dark;
+          --paper: #000;
+          --ink: #f4f1e9;
+          --muted: #aaa9a2;
+          --line: #343434;
+          --accent: #f0785d;
+          --accent-dark: #ff9a7e;
+        }
       }
 
       * { box-sizing: border-box; }
@@ -43,6 +76,28 @@
         justify-content: space-between;
         min-height: 88px;
         border-bottom: 1px solid var(--line);
+      }
+
+      .theme-control {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .theme-select {
+        min-height: 38px;
+        padding: 7px 30px 7px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        font-size: 13px;
+      }
+
+      .theme-select:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
       }
 
       .brand {
@@ -210,7 +265,14 @@
           <span class="brand-mark" aria-hidden="true">g</span>
           <span>GoateyDev</span>
         </a>
-        <p class="eyebrow">Apps &amp; tools</p>
+        <label class="theme-control">
+          <span class="eyebrow">Theme</span>
+          <select class="theme-select" id="theme-select" aria-label="Theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
       </header>
 
       <main>
@@ -245,5 +307,31 @@
         <a href="mailto:goateydev@gmail.com">Contact GoateyDev</a>
       </footer>
     </div>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const selector = document.querySelector("#theme-select");
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+        function updateThemeColor() {
+          const dark = root.dataset.theme === "dark"
+            || (root.dataset.theme === "system" && systemDark.matches);
+          document.querySelector('meta[name="theme-color"]').content = dark ? "#000000" : "#f4f1e9";
+        }
+
+        selector.value = root.dataset.theme;
+        updateThemeColor();
+        selector.addEventListener("change", () => {
+          root.dataset.theme = selector.value;
+          try {
+            localStorage.setItem("goateydev-theme", selector.value);
+          } catch {}
+          updateThemeColor();
+        });
+        systemDark.addEventListener("change", () => {
+          if (root.dataset.theme === "system") updateThemeColor();
+        });
+      })();
+    </script>
   </body>
 </html>
