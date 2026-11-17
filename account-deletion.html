@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Request deletion of your GoateyDev Reminders account and associated cloud data.">
+    <meta name="theme-color" content="#f4f1e9">
+    <title>Account Deletion | GoateyDev Reminders</title>
+    <script>
+      (() => {
+        const allowed = ["system", "light", "dark"];
+        let theme = "system";
+        try {
+          const saved = localStorage.getItem("goateydev-theme");
+          if (allowed.includes(saved)) theme = saved;
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f1e9; --ink: #20231f; --muted: #686b63;
+        --line: #d4d2c8; --accent: #d35435;
+        --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      :root[data-theme="dark"] { color-scheme: dark; --paper: #000; --ink: #f4f1e9; --muted: #aaa9a2; --line: #343434; --accent: #f0785d; }
+      @media (prefers-color-scheme: dark) {
+        :root[data-theme="system"] { color-scheme: dark; --paper: #000; --ink: #f4f1e9; --muted: #aaa9a2; --line: #343434; --accent: #f0785d; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.7; }
+      .page { width: min(100% - 48px, 850px); margin: auto; }
+      header, footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); }
+      header { min-height: 82px; }
+      footer { margin-top: 72px; padding: 22px 0 30px; border-top: 1px solid var(--line); border-bottom: 0; color: var(--muted); font-size: 13px; }
+      .brand { color: var(--ink); font-weight: 700; text-decoration: none; }
+      .links, .theme-control { display: flex; align-items: center; gap: 16px; }
+      a { color: var(--accent); text-underline-offset: 4px; }
+      .links a { color: var(--muted); font-size: 14px; }
+      select { border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); padding: 7px 10px; font: inherit; font-size: 13px; }
+      main { padding: 60px 0 12px; }
+      .eyebrow { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+      h1, h2 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+      h1 { margin: 12px 0 8px; font-size: clamp(42px, 8vw, 66px); letter-spacing: -.045em; }
+      h2 { margin: 38px 0 8px; font-size: 27px; }
+      p, li { color: var(--muted); }
+      ul { padding-left: 22px; }
+      li + li { margin-top: 7px; }
+      .request { display: inline-block; margin-top: 10px; padding: 12px 18px; border-radius: 999px; background: var(--accent); color: var(--paper); font-weight: 700; text-decoration: none; }
+      .request:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+      @media (max-width: 600px) {
+        .page { width: min(100% - 34px, 850px); }
+        header { flex-wrap: wrap; padding: 16px 0; }
+        .links { order: 3; width: 100%; }
+        main { padding-top: 42px; }
+        footer { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <a class="brand" href="/">GoateyDev</a>
+        <nav class="links" aria-label="Main navigation">
+          <a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a>
+        </nav>
+        <label class="theme-control">Theme
+          <select id="theme-select" aria-label="Theme">
+            <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+          </select>
+        </label>
+      </header>
+      <main>
+        <p class="eyebrow">GoateyDev Reminders</p>
+        <h1>Delete your account</h1>
+        <p>Use this page to request permanent deletion of your GoateyDev account and associated cloud data. Requests are handled manually; sending the email starts a request and does not delete the account immediately. Send it from the Google account email connected to Reminders, or include that account email in the message. We may contact you to verify that you control the account and will reply when processing is complete.</p>
+
+        <h2>What deletion does</h2>
+        <ul>
+          <li>Your GoateyDev account, sessions, reminders you created, and labels you created are permanently deleted from the cloud.</li>
+          <li>Collaborators lose access to reminders and labels you created. Their own reminders under your deleted labels remain in their accounts, but are detached from the deleted label and are no longer shared through it.</li>
+          <li>Your access to shared labels owned by other people is removed.</li>
+          <li>Reminders or backup files stored only on your device are not deleted by this request. A collaborator's offline device may retain cached copies until it syncs again.</li>
+          <li>Deletion cannot be undone. Registering again will not restore deleted cloud data.</li>
+        </ul>
+
+        <h2>Request deletion</h2>
+        <p>The email opens a draft addressed to GoateyDev. Add the Google account email associated with your Reminders account before sending. If no email app opens, send your request directly to <a href="mailto:goateydev@gmail.com">goateydev@gmail.com</a>.</p>
+        <a class="request" href="mailto:goateydev@gmail.com?subject=GoateyDev%20Reminders%20account%20deletion%20request&amp;body=Please%20delete%20the%20GoateyDev%20Reminders%20account%20associated%20with%20this%20Google%20account%20email%3A%20%5Benter%20account%20email%5D.%0D%0A%0D%0AI%20understand%20that%20this%20is%20permanent%2C%20that%20reminders%20and%20labels%20I%20created%20will%20be%20deleted%2C%20that%20collaborators%20will%20lose%20access%20to%20them%2C%20and%20that%20deleted%20cloud%20data%20cannot%20be%20restored%20by%20registering%20again.">Email a deletion request</a>
+      </main>
+      <footer><span>GoateyDev</span><a href="mailto:goateydev@gmail.com">Contact</a></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const selector = document.querySelector("#theme-select");
+      selector.value = root.dataset.theme;
+      selector.addEventListener("change", () => {
+        root.dataset.theme = selector.value;
+        try { localStorage.setItem("goateydev-theme", selector.value); } catch {}
+      });
+    </script>
+  </body>
+</html>
